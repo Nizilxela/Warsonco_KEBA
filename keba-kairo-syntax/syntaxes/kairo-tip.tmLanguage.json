@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "KAIRO TIP",
+  "scopeName": "source.kairo.tip",
+  "patterns": [
+    { "include": "#disabledLine" },
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#constants" },
+    { "include": "#controlKeywords" },
+    { "include": "#flowCommands" },
+    { "include": "#motionCommands" },
+    { "include": "#motionSettings" },
+    { "include": "#syncAndWait" },
+    { "include": "#ioCommands" },
+    { "include": "#systemFunctions" },
+    { "include": "#mathFunctions" },
+    { "include": "#bitFunctions" },
+    { "include": "#types" },
+    { "include": "#namespaces" },
+    { "include": "#methodCalls" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "disabledLine": {
+      "name": "comment.disabled.kairo",
+      "begin": "^\\s*##",
+      "beginCaptures": { "0": { "name": "punctuation.definition.comment.kairo" } },
+      "end": "$"
+    },
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.kairo", "begin": "//", "beginCaptures": { "0": { "name": "punctuation.definition.comment.kairo" } }, "end": "$" }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.kairo",
+      "begin": "\"", "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.kairo" } },
+      "end": "\"", "endCaptures": { "0": { "name": "punctuation.definition.string.end.kairo" } },
+      "patterns": [{ "name": "constant.character.escape.kairo", "match": "\\\\." }]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.hexadecimal.kairo", "match": "\\b16#[0-9A-Fa-f]+\\b" },
+        { "name": "constant.numeric.binary.kairo", "match": "\\b2#[01]+\\b" },
+        { "name": "constant.numeric.float.kairo", "match": "(?<![\\w.])[+-]?(?:\\d+\\.\\d*|\\.\\d+)(?:[Ee][+-]?\\d+)?\\b" },
+        { "name": "constant.numeric.integer.kairo", "match": "\\b\\d+\\b" }
+      ]
+    },
+    "constants": { "patterns": [
+      { "name": "constant.language.boolean.kairo", "match": "\\b(?:TRUE|FALSE)\\b" },
+      { "name": "constant.language.kairo", "match": "\\b(?:RISINGEDGE|FALLINGEDGE|TRAPEZOID|SINE|SINESQUARE|MINJERK|TIMEOPTIMAL|RISETIME|CART|CARTCURVE|WRISTJOINT|FROMBEGIN|FROMEND|XYPLANE|XZPLANE|YZPLANE|ALLAXIS|CONTINUETRACKING|HARDSTOP|SPEEDDROP|ASSUREOVL|CURRENT_PROGRAM_RUNNIG|ROBOT_PROGRAM_RUNNING|ROBOT_MOVING|A1|A2|A3|A4|A5|A6|AUX1|AUX2|AUX3)\\b" }
+    ]},
+    "controlKeywords": { "patterns": [
+      { "name": "keyword.control.conditional.kairo", "match": "\\b(?:IF|THEN|ELSIF|ELSE|END_IF)\\b" },
+      { "name": "keyword.control.loop.kairo", "match": "\\b(?:WHILE|DO|END_WHILE|LOOP|END_LOOP)\\b" },
+      { "name": "keyword.control.flow.kairo", "match": "\\b(?:RETURN|LABEL|GOTO)\\b" },
+      { "name": "keyword.operator.word.kairo", "match": "\\b(?:AND|OR|XOR|NOT|MOD)\\b" }
+    ]},
+    "flowCommands": { "patterns": [
+      { "name": "keyword.control.call.kairo", "match": "\\b(?:CALL|RUN|KILL|WAIT)\\b" }
+    ]},
+    "motionCommands": { "patterns": [
+      { "name": "support.function.motion.kairo", "match": "\\b(?:PTP|Lin|Circ|PTPRel|LinRel|LinRelTCP|MoveRobotAxis|StopRobot|PTPSearch|LinSearch|RefRobotAxis|RefRobotAxisAsync|WaitRefFinished)\\b(?=\\s*\\()" }
+    ]},
+    "motionSettings": { "patterns": [
+      { "name": "support.function.motion-settings.kairo", "match": "\\b(?:Dyn|DynOvr|Ovl|Ramp|RefSys|ExternalTCP|Tool|OriMode|Workpiece|SetJointMonitoringLimits|SetGuardMonitoringLimits)\\b(?=\\s*\\()" }
+    ]},
+    "syncAndWait": { "patterns": [
+      { "name": "support.function.synchronization.kairo", "match": "\\b(?:WaitIsFinished|WaitJustInTime|WaitOnPath|WaitTime|OnParameter|OnPlane|OnDistance|OnPosition|Sync)\\b(?=\\s*\\()" }
+    ]},
+    "ioCommands": { "patterns": [
+      { "name": "support.function.io.kairo", "match": "\\b(?:WaitBool|WaitBit|WaitBitMask|WaitLess|WaitGreater|WaitInside|WaitOutside|MAP|MAPX)\\b(?=\\s*\\()" },
+      { "name": "support.function.io.kairo", "match": "\\b(?:Set|Pulse|Connect)\\b(?=\\s*\\()" }
+    ]},
+    "systemFunctions": { "patterns": [
+      { "name": "support.function.system.kairo", "match": "\\b(?:Stop|Info|Warning|Error|Random|SysTime|SysTimeToString)\\b(?=\\s*\\()" }
+    ]},
+    "mathFunctions": { "patterns": [
+      { "name": "support.function.math.kairo", "match": "\\b(?:SIN|COS|TAN|COT|ASIN|ACOS|ATAN|ACOT|ATAN2|LN|EXP|EXPT|ABS|SQRT)\\b(?=\\s*\\()" }
+    ]},
+    "bitFunctions": { "patterns": [
+      { "name": "support.function.bitwise.kairo", "match": "\\b(?:SHR|SHL|ROR|ROL|SetBit|ResetBit|CheckBit|STR|CHR|ORD)\\b(?=\\s*\\()" }
+    ]},
+    "types": { "patterns": [
+      { "name": "storage.type.kairo", "match": "\\b(?:BOOL|SINT|INT|DINT|LINT|USINT|UINT|UDINT|ULINT|BYTE|WORD|DWORD|LWORD|REAL|LREAL|STRING|ANY|AXISPOS|ROBAXISPOS|AUXAXISPOS|CARTPOS|CARTPOSTURNO|ROBCARTPOS|POLARPOS|AXISDIST|CARTDIST|CARTFRAME|WORLDREFSYS|CARTREFSYS|CARTREFSYSEXT|CARTREFSYSAXIS|EXTERNALTCP|TOOL|TOOLSTATIC|FLANGETOOL|TOOLAXIS|WORKPIECE|DYNAMIC|OVLREL|OVLABS|OVLSUPPOS|PERCENT|PERC200|BOOLSIGIN|BOOLSIGOUT|ROBOTDATA|CLOCK|TIMER|SYNC|MAPTO)\\b" }
+    ]},
+    "namespaces": { "patterns": [
+      { "name": "support.namespace.kairo", "match": "\\b(?:IEC|RobotData|SYNC)\\b(?=\\.)" },
+      { "name": "variable.language.kairo", "match": "\\b(?:World|Flange|DefaultTool|noWp|RobotBase)\\b" }
+    ]},
+    "methodCalls": { "patterns": [
+      { "name": "entity.name.function.method.kairo", "match": "(?<=\\.)[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()" }
+    ]},
+    "operators": { "patterns": [
+      { "name": "keyword.operator.assignment.kairo", "match": ":=" },
+      { "name": "keyword.operator.comparison.kairo", "match": "<>|<=|>=|=|<|>" },
+      { "name": "keyword.operator.arithmetic.kairo", "match": "[+*/-]" },
+      { "name": "punctuation.accessor.kairo", "match": "\\." }
+    ]}
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "KAIRO TID",
+  "scopeName": "source.kairo.tid",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#attributes" },
+    { "include": "#declarationKeywords" },
+    { "include": "#types" },
+    { "include": "#operators" },
+    { "include": "#identifiers" }
+  ],
+  "repository": {
+    "comments": { "patterns": [
+      { "name": "comment.line.double-slash.kairo", "begin": "//", "beginCaptures": { "0": { "name": "punctuation.definition.comment.kairo" } }, "end": "$" }
+    ]},
+    "strings": {
+      "name": "string.quoted.double.kairo", "begin": "\"", "end": "\"",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.kairo" } },
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.kairo" } }
+    },
+    "numbers": { "patterns": [
+      { "name": "constant.numeric.hexadecimal.kairo", "match": "\\b16#[0-9A-Fa-f]+\\b" },
+      { "name": "constant.numeric.binary.kairo", "match": "\\b2#[01]+\\b" },
+      { "name": "constant.numeric.float.kairo", "match": "(?<![\\w.])[+-]?(?:\\d+\\.\\d*|\\.\\d+)(?:[Ee][+-]?\\d+)?\\b" },
+      { "name": "constant.numeric.integer.kairo", "match": "\\b\\d+\\b" }
+    ]},
+    "attributes": { "patterns": [
+      { "name": "storage.modifier.kairo", "match": "\\b(?:CONST|READONLY)\\b" }
+    ]},
+    "declarationKeywords": { "patterns": [
+      { "name": "keyword.declaration.kairo", "match": "\\b(?:ARRAY|OF|MAPTO)\\b" }
+    ]},
+    "types": { "patterns": [
+      { "name": "storage.type.kairo", "match": "\\b(?:BOOL|SINT|INT|DINT|LINT|USINT|UINT|UDINT|ULINT|BYTE|WORD|DWORD|LWORD|REAL|LREAL|STRING|ANY|AXISPOS|ROBAXISPOS|AUXAXISPOS|CARTPOS|CARTPOSTURNO|ROBCARTPOS|POLARPOS|AXISDIST|CARTDIST|CARTFRAME|WORLDREFSYS|CARTREFSYS|CARTREFSYSEXT|CARTREFSYSAXIS|EXTERNALTCP|TOOL|TOOLSTATIC|FLANGETOOL|TOOLAXIS|WORKPIECE|DYNAMIC|OVLREL|OVLABS|OVLSUPPOS|PERCENT|PERC200|BOOLSIGIN|BOOLSIGOUT|ROBOTDATA|CLOCK|TIMER|SYNC)\\b" }
+    ]},
+    "operators": { "patterns": [
+      { "name": "keyword.operator.assignment.kairo", "match": ":=" },
+      { "name": "punctuation.separator.type.kairo", "match": ":" },
+      { "name": "keyword.operator.range.kairo", "match": "\\.\\." },
+      { "name": "punctuation.accessor.kairo", "match": "\\." }
+    ]},
+    "identifiers": { "patterns": [
+      { "name": "entity.name.variable.kairo", "match": "^[ \\t]*[A-Za-z_][A-Za-z0-9_]*(?=\\s*:)" }
+    ]}
+  }
+}

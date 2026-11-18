@@ -1,0 +1,30 @@
+{
+  "name": "keba-kairo-syntax",
+  "displayName": "KEBA KAIRO Syntax",
+  "description": "Syntax highlighting for KEBA KeMotion3 KAIRO program (.tip) and data (.tid) files",
+  "version": "1.1.0",
+  "publisher": "local",
+  "license": "UNLICENSED",
+  "engines": { "vscode": "^1.70.0" },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "kairo-tip",
+        "aliases": ["KAIRO TIP", "KAIRO Program"],
+        "extensions": [".tip"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "kairo-tid",
+        "aliases": ["KAIRO TID", "KAIRO Data"],
+        "extensions": [".tid"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      { "language": "kairo-tip", "scopeName": "source.kairo.tip", "path": "./syntaxes/kairo-tip.tmLanguage.json" },
+      { "language": "kairo-tid", "scopeName": "source.kairo.tid", "path": "./syntaxes/kairo-tid.tmLanguage.json" }
+    ]
+  }
+}
